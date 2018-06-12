@@ -25,6 +25,25 @@ const HeaderContainer = styled.div`
   padding: 1.45rem 1.0875rem;
   position: relative;
   z-index: 2;
+  display: flex;
+  justify-content: space-between;
+`
+const MainNav = styled.nav`
+  ul {
+    list-style: none;
+    display: flex;
+    li {
+      font-family: 'Nunito Sans', sans-serif;
+      margin-left: 10px;
+      a {
+        text-decoration: none;
+        color: grey;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
 `
 
 export default class Header extends Component {
@@ -70,7 +89,7 @@ export default class Header extends Component {
             </h1>
             <p> {data.site.siteMetadata.title}</p>
             <p>{data.site.siteMetadata.desc}</p>
-            <nav>
+            <MainNav>
               <ul>
                 <li>
                   <Link to="/">Home</Link>
@@ -79,7 +98,7 @@ export default class Header extends Component {
                   <Link to="/about"> About</Link>
                 </li>
               </ul>
-            </nav>
+            </MainNav>
           </HeaderContainer>
           <Img
             style={{

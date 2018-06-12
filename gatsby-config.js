@@ -3,6 +3,7 @@ module.exports = {
     title: 'Pitch Black Marketing',
     desc: 'Pitch Black Solves Problems For Direct Marketers',
   },
+  pathPrefix: "/gatsby",
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
@@ -29,5 +30,11 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`nunito sans\:300,400,700,900`],
+      },
+    },
   ],
 }
