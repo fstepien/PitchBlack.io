@@ -1,14 +1,37 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import PostListing from '../components/PostListing'
+import ServiceList from '../components/ServiceList'
 
 const IndexPage = ({ data }) => (
   <div>
-    <h2>Posts</h2>
-    {/* mapping though each edge and pulling node from each  */}
-    {data.allContentfulBlogPost.edges.map(({ node }) => (
-      <PostListing key={node.id} post={node} />
-    ))}
+    <section
+      className="about"
+      style={{
+        margin: '0 auto',
+        maxWidth: 1000,
+        padding: '0px 1.0875rem 1.45rem',
+        paddingTop: 0,
+      }}
+    >
+      <h2>Who We Are</h2>
+    </section>
+    <ServiceList services={data.allContentfulService.edges} />
+    <section
+      className="blog"
+      style={{
+        margin: '0 auto',
+        maxWidth: 1000,
+        padding: '0px 1.0875rem 1.45rem',
+        paddingTop: 0,
+      }}
+    >
+      <h2>Posts</h2>
+      {/* mapping though each edge and pulling node from each  */}
+      {data.allContentfulBlogPost.edges.map(({ node }) => (
+        <PostListing key={node.id} post={node} />
+      ))}
+    </section>
   </div>
 )
 
@@ -20,6 +43,22 @@ export const query = graphql`
       siteMetadata {
         title
         desc
+      }
+    }
+    allContentfulService {
+      edges {
+        node {
+          title
+          body {
+            childMarkdownRemark {
+              html
+              excerpt
+            }
+          }
+          slug
+          id
+          intro
+        }
       }
     }
     allContentfulBlogPost {

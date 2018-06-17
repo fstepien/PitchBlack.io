@@ -7,22 +7,36 @@ import logo from '../images/logo.svg'
 import Img from 'gatsby-image'
 
 const HeaderWrapper = styled.div`
+  font-family: 'Nunito Sans', sans-serif;
   background: black;
   margin-bottom: 1.45rem;
   overflow: hidden;
   position: relative;
   height: ${({ isHome }) => (isHome ? '70vh' : '20vh')};
 
+  margin: 0 auto;
+  padding: 1.0875rem 1.0875rem 0;
+
   h1 {
-    img {
-      height: 80px;
+    & a {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      img {
+        height: 30px;
+        margin: 0 10px 0 0;
+      }
+      span {
+        font-size: 20px;
+        text-transform: uppercase;
+      }
     }
   }
 `
 const HeaderContainer = styled.div`
   margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
+  width: 100%;
+  max-width: 1500px;
   position: relative;
   z-index: 2;
   display: flex;
@@ -33,7 +47,6 @@ const MainNav = styled.nav`
     list-style: none;
     display: flex;
     li {
-      font-family: 'Nunito Sans', sans-serif;
       margin-left: 10px;
       a {
         text-decoration: none;
@@ -42,6 +55,32 @@ const MainNav = styled.nav`
           color: white;
         }
       }
+    }
+  }
+`
+const MainText = styled.div`
+  color: white;
+  position: absolute;
+  top: 50%;
+  top: ${({ isHome }) => (isHome ? '50%' : '-100%')};
+  opacity: ${({ isHome }) => (isHome ? '1' : '0')};
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  max-width: 620px;
+  display: inline;
+  transition: all 0.5s ease-in-out;
+  & h1 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 1.2;
+    background-color: black;
+    display: inline;
+    font-size: 3rem;
+    box-shadow: 10px 0 0 black, -10px 0 0 black;
+    & .yellow {
+      color: yellow;
     }
   }
 `
@@ -76,7 +115,7 @@ export default class Header extends Component {
           ref={wrapper => (this.wrapper = ReactDOM.findDOMNode(wrapper))}
         >
           <HeaderContainer>
-            <h1 style={{ margin: 0 }}>
+            <h1>
               <Link
                 to="/"
                 style={{
@@ -84,11 +123,11 @@ export default class Header extends Component {
                   textDecoration: 'none',
                 }}
               >
-                <img src={logo} alt="Level Up Logo" />
+                <img src={logo} alt="Pitch Black Icosahedron" />
+                <span> {data.site.siteMetadata.title}</span>
               </Link>
             </h1>
-            <p> {data.site.siteMetadata.title}</p>
-            <p>{data.site.siteMetadata.desc}</p>
+
             <MainNav>
               <ul>
                 <li>
@@ -100,6 +139,13 @@ export default class Header extends Component {
               </ul>
             </MainNav>
           </HeaderContainer>
+          <MainText isHome={location.pathname === '/'}>
+            <h1>
+              Pitch Black <br />
+              <span className="yellow">Solves Probelms</span> <br />for direct
+              marketers
+            </h1>
+          </MainText>
           <Img
             style={{
               position: 'absolute',
@@ -107,7 +153,7 @@ export default class Header extends Component {
               top: 0,
               width: '100%',
               height: '100%',
-              opacity: 0.4,
+              opacity: 0.45,
             }}
             sizes={data.background.sizes}
           />

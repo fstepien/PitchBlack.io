@@ -3,7 +3,15 @@ import React, { Component } from 'react'
 export default class About extends Component {
   render() {
     return (
-      <div>
+      <div
+        style={{
+          fontFamily: 'Nunito Sans, sans-serif',
+          margin: '50px auto',
+          maxWidth: 1000,
+          padding: '0px 1.0875rem 1.45rem',
+          paddingTop: 0,
+        }}
+      >
         <h1>About Us</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta vel
