@@ -8,14 +8,26 @@ const Contact = () => (
       You can email me at
       <a href="mailto:contact@pitchblack.io">contact@filipstepien.com</a>
     </p>
-    <form
-      name="contact"
-      data-netflify="true"
-      data-netflify-honeypot="bot-filed"
-      method="post"
-    >
-      <input type="text" name="name" placeholder="Name" />
-      <button>Send</button>
+    <form name="contact" method="POST" netlify>
+      <p>
+        <label>
+          Your Name: <input type="text" name="name" />
+        </label>
+      </p>
+      <p>
+        <label>
+          Your Email: <input type="email" name="email" />
+        </label>
+      </p>
+
+      <p>
+        <label>
+          Message: <textarea name="message" />
+        </label>
+      </p>
+      <p>
+        <button type="submit">Send</button>
+      </p>
     </form>
   </section>
 )
