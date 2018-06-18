@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import PostListing from '../components/PostListing'
 import ServiceList from '../components/ServiceList'
+import Contact from '../components/Contact'
 
 const IndexPage = ({ data }) => (
   <div>
@@ -32,6 +33,7 @@ const IndexPage = ({ data }) => (
         <PostListing key={node.id} post={node} />
       ))}
     </section>
+    <Contact />
   </div>
 )
 
