@@ -6,9 +6,9 @@ const Contact = () => (
     <h3>Get In Touch</h3>
     <p className="contact__intro">
       You can email me at
-      <a href="mailto:contact@pitchblack.io">contact@filipstepien.com</a>
+      <a href="mailto:contact@pitchblack.io">contact@pitchblack.io</a>
     </p>
-    <form name="contact" method="POST" netlify>
+    <form name="contact" method="POST" data-netlify="true">
       <p>
         <label>
           Your Name: <input type="text" name="name" />
