@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const PostListing = ({ post }) => (
-  <article>
+  <article className="blog-posts__wrap__list__item">
     <h3>
       <Link to={post.slug}>{post.title}</Link>
     </h3>

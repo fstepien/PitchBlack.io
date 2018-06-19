@@ -5,26 +5,13 @@ import ServiceList from '../components/ServiceList'
 import Contact from '../components/Contact'
 import About from '../components/About'
 import Testimonials from '../components/Testimonials'
+import IndexPageBlogPosts from '../components/IndexPageBlogPosts'
 
 const IndexPage = ({ data }) => (
   <div>
     <About about={data.allContentfulAbout} />
     <ServiceList services={data.allContentfulService.edges} />
-    <section
-      className="blog"
-      style={{
-        margin: '0 auto',
-        maxWidth: 1000,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      <h2>Posts</h2>
-      {/* mapping though each edge and pulling node from each  */}
-      {data.allContentfulBlogPost.edges.map(({ node }) => (
-        <PostListing key={node.id} post={node} />
-      ))}
-    </section>
+    <IndexPageBlogPosts posts={data.allContentfulBlogPost} />
     <Testimonials
       testimonials={data.allContentfulTestimonial}
       background={data.background}

@@ -61,11 +61,15 @@ const MainNav = styled.nav`
 const MainText = styled.div`
   color: white;
   position: absolute;
-  top: 50%;
-  top: ${({ isHome }) => (isHome ? '50%' : '-100%')};
+
+  bottom: ${({ isHome }) => (isHome ? '50%' : '100%')};
+  transform: translateX(-50%) translateY(50%);
+  @media (max-height: 700px) {
+    bottom: ${({ isHome }) => (isHome ? '10%' : '100%')};
+    transform: translateX(-50%) translateY(0%);
+  }
   opacity: ${({ isHome }) => (isHome ? '1' : '0')};
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
   z-index: 5;
   max-width: 620px;
   display: inline;
@@ -74,6 +78,9 @@ const MainText = styled.div`
     text-transform: uppercase;
     font-weight: 600;
     font-size: 3rem;
+    @media (max-height: 700px) {
+      font-size: 2rem;
+    }
     line-height: 1.2;
     background-color: black;
     display: inline;
