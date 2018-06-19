@@ -35,7 +35,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`nunito sans\:300,400,700,900`],
+        fonts: [`nunito sans\:300,400,700]`],
       },
     },
     'gatsby-transformer-remark',

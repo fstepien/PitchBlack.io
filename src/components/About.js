@@ -23,7 +23,7 @@ const AboutSection = styled.section`
   margin: 75px auto;
   max-width: 1000px;
   padding: 0 1.0875rem 1.45rem;
-   font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
 
   h2,
   h4 {

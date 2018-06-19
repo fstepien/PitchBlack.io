@@ -25,8 +25,11 @@ const IndexPage = ({ data }) => (
         <PostListing key={node.id} post={node} />
       ))}
     </section>
-    <Testimonials testimonials={data.allContentfulTestimonial} />
-    <Contact />
+    <Testimonials
+      testimonials={data.allContentfulTestimonial}
+      background={data.background}
+    />
+    <Contact id="contact" />
   </div>
 )
 
@@ -38,6 +41,11 @@ export const query = graphql`
       siteMetadata {
         title
         desc
+      }
+    }
+    background: imageSharp(id: { regex: "/office.jpg/" }) {
+      sizes(maxWidth: 1240) {
+        ...GatsbyImageSharpSizes
       }
     }
     allContentfulService {

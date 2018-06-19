@@ -1,6 +1,6 @@
 # Pitch Black Marketing
 
-Built using Gatsby/React, Contentful CMS, and hosted on Netlify hook and auto update. 
+Built using Gatsby/React, Contentful CMS, and hosted on Netlify with a webhooks for auto updating. 
 
 ![](https://meta.filipstepien.com/pitchblack.stack.png)
 ![](https://meta.filipstepien.com/pitchblack.flow.arrow.png)
