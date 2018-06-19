@@ -138,7 +138,11 @@ export default class Header extends Component {
                   <Link to="/services"> Services</Link>
                 </li>
                 <li>
-                  <a href="#contact"> Contact</a>
+                  {this.props.location.pathname === '/' ? (
+                    <a href="#contact"> Contact</a>
+                  ) : (
+                    <Link to="/#contact"> Contact</Link>
+                  )}
                 </li>
               </ul>
             </MainNav>
