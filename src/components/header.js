@@ -133,8 +133,12 @@ export default class Header extends Component {
                 <li>
                   <Link to="/">Home</Link>
                 </li>
+
                 <li>
-                  <Link to="/about"> About</Link>
+                  <Link to="/services"> Services</Link>
+                </li>
+                <li>
+                  <a href="#contact"> Contact</a>
                 </li>
               </ul>
             </MainNav>

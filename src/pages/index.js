@@ -3,20 +3,12 @@ import Link from 'gatsby-link'
 import PostListing from '../components/PostListing'
 import ServiceList from '../components/ServiceList'
 import Contact from '../components/Contact'
+import About from '../components/About'
+import Testimonials from '../components/Testimonials'
 
 const IndexPage = ({ data }) => (
   <div>
-    <section
-      className="about"
-      style={{
-        margin: '0 auto',
-        maxWidth: 1000,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-      <h2>Who We Are</h2>
-    </section>
+    <About about={data.allContentfulAbout} />
     <ServiceList services={data.allContentfulService.edges} />
     <section
       className="blog"
@@ -33,6 +25,7 @@ const IndexPage = ({ data }) => (
         <PostListing key={node.id} post={node} />
       ))}
     </section>
+    <Testimonials testimonials={data.allContentfulTestimonial} />
     <Contact />
   </div>
 )
@@ -60,6 +53,35 @@ export const query = graphql`
           slug
           id
           intro
+        }
+      }
+    }
+    allContentfulAbout {
+      edges {
+        node {
+          body {
+            childMarkdownRemark {
+              html
+              excerpt
+            }
+          }
+          id
+        }
+      }
+    }
+    allContentfulTestimonial {
+      edges {
+        node {
+          name
+          job
+          title
+          testimonial {
+            childMarkdownRemark {
+              html
+              excerpt
+            }
+          }
+          id
         }
       }
     }
