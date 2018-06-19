@@ -54,7 +54,11 @@ const ServiceListSection = styled.section`
     max-width: 1000px;
     padding: 75px 1.0875rem 1.45rem;
     &__list {
-      max-width: 850px;
+       max-width: 900px;
+      padding: 0 50px;
+      @media (max-width: 600px) {
+        padding: 0;
+      }
       margin: 0 auto;
       display: flex;
       flex-flow: row wrap;
@@ -71,7 +75,7 @@ const ServiceListSection = styled.section`
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all ease 0.3s;
-                font-weight: bold;
+                font-weight: 400;
             &:hover {
                 color: black;
                 background: yellow;
@@ -81,7 +85,9 @@ const ServiceListSection = styled.section`
       &__item {
         width: calc(30% - 10px);
         margin-bottom: 25px;
-     
+        @media (max-width: 1000px) {
+          width: calc(50% - 10px)
+        }
         }
 
         & p {
