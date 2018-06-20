@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Recaptcha from 'react-google-recaptcha'
+
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
 
 const encode = data => {
   return Object.keys(data)
@@ -10,7 +13,11 @@ const encode = data => {
 class Contact extends Component {
   constructor(props) {
     super(props)
-    this.state = { name: '', email: '', message: '' }
+    this.state = {
+      name: '',
+      email: '',
+      message: '',
+    }
   }
 
   handleSubmit = e => {
@@ -20,12 +27,17 @@ class Contact extends Component {
       body: encode({ 'form-name': 'contact', ...this.state }),
     })
       .then(() => alert('Success!'))
+      .then(res => console.log(res))
       .catch(error => alert(error))
 
     e.preventDefault()
   }
 
   handleChange = e => this.setState({ [e.target.name]: e.target.value })
+
+  handleRecaptcha = value => {
+    this.setState({ 'g-recaptcha-response': value })
+  }
 
   render() {
     const { name, email, message } = this.state
@@ -43,6 +55,9 @@ class Contact extends Component {
             onSubmit={this.handleSubmit}
             data-netlify="true"
             data-netlify-honeypot="bot-field"
+            name="contact-recaptcha"
+            method="post"
+            data-netlify-recaptcha="true"
           >
             <input type="hidden" name="contact" value="contact" />
             <p>
@@ -76,7 +91,11 @@ class Contact extends Component {
                 onChange={this.handleChange}
               />
             </p>
-            <div data-netlify-recaptcha />
+            <Recaptcha
+              ref="recaptcha"
+              sitekey={RECAPTCHA_KEY}
+              onChange={this.handleRecaptcha}
+            />
             <p>
               <button type="submit">Send</button>
             </p>
