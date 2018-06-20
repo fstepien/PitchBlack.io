@@ -44,9 +44,9 @@ class Contact extends Component {
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
-            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="contact" value="contact" />
             <p>
-              <label for="name">Your Name: </label>
+              <label htmlFor="name">Your Name: </label>
               <input
                 type="text"
                 name="name"
@@ -57,7 +57,7 @@ class Contact extends Component {
               />
             </p>
             <p>
-              <label for="email">Your Email: </label>
+              <label htmlFor="email">Your Email: </label>
               <input
                 type="email"
                 name="email"
@@ -68,7 +68,7 @@ class Contact extends Component {
               />
             </p>
             <p>
-              <label for="message">Message: </label>
+              <label htmlFor="message">Message: </label>
               <textarea
                 name="message"
                 value={message}
@@ -76,6 +76,7 @@ class Contact extends Component {
                 onChange={this.handleChange}
               />
             </p>
+            <div data-netlify-recaptcha />
             <p>
               <button type="submit">Send</button>
             </p>
