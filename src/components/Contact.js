@@ -39,7 +39,12 @@ class Contact extends Component {
           </p>
         </div>
         <div className="form">
-          <form onSubmit={this.handleSubmit}>
+          <form
+            onSubmit={this.handleSubmit}
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="contact" />
             <p>
               <label for="name">Your Name: </label>
               <input
