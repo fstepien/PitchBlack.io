@@ -2,44 +2,42 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Recaptcha from 'react-google-recaptcha'
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
 
 function encode(data) {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
 }
 
 export default class Contact extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   handleRecaptcha = value => {
-    this.setState({ "g-recaptcha-response": value });
-  };
+    this.setState({ 'g-recaptcha-response': value })
+  }
 
   handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    e.preventDefault()
+    const form = e.target
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state
-      })
+        'form-name': form.getAttribute('name'),
+        ...this.state,
+      }),
     })
-      .then(() => navigateTo(form.getAttribute("action")))
-      .catch(error => alert(error));
-  };
-
-
+      .then(() => navigateTo(form.getAttribute('action')))
+      .catch(error => alert(error))
+  }
 
   render() {
     const { name, email, message } = this.state
@@ -56,7 +54,7 @@ export default class Contact extends React.Component {
           <form
             name="contact-recaptcha"
             method="post"
-            action="/thanks/"
+            action="/blog/"
             data-netlify="true"
             data-netlify-recaptcha="true"
             onSubmit={this.handleSubmit}
@@ -97,8 +95,6 @@ export default class Contact extends React.Component {
     )
   }
 }
-
-export default Contact
 
 const ContactSection = styled.section`
   margin: 0 auto 25px;
