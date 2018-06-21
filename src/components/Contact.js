@@ -91,11 +91,12 @@ class Contact extends Component {
                 onChange={this.handleChange}
               />
             </p>
-            <Recaptcha
+            {/* <Recaptcha
               ref="recaptcha"
               sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
               onChange={this.handleRecaptcha}
-            />
+            /> */}
+            <div data-netlify-recaptcha />
             <p>
               <button type="submit">Send</button>
             </p>
