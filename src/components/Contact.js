@@ -58,6 +58,8 @@ class Contact extends Component {
             name="contact-recaptcha"
             method="post"
             data-netlify-recaptcha="true"
+            netlify-recaptcha
+            netlify
           >
             <input type="hidden" name="contact" value="contact" />
             <p>
@@ -67,7 +69,7 @@ class Contact extends Component {
                 name="name"
                 value={name}
                 placeholder="Your Name"
-                onChange={this.handleChange}
+                onChange={this.handleRecaptcha}
                 required
               />
             </p>
@@ -91,12 +93,12 @@ class Contact extends Component {
                 onChange={this.handleChange}
               />
             </p>
-            {/* <Recaptcha
+            <Recaptcha
               ref="recaptcha"
               sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
               onChange={this.handleRecaptcha}
-            /> */}
-            <div data-netlify-recaptcha />
+            />
+
             <p>
               <button type="submit">Send</button>
             </p>
