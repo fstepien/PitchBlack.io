@@ -2,43 +2,44 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Recaptcha from 'react-google-recaptcha'
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
-const encode = data => {
+function encode(data) {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
 }
 
-class Contact extends Component {
+export default class Contact extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      'g-recapch-response': '',
-      name: '',
-      email: '',
-      message: '',
-    }
+    super(props);
+    this.state = {};
   }
 
-  handleSubmit = e => {
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...this.state }),
-    })
-      .then(() => alert('Success!'))
-      .then(res => console.log(res))
-      .catch(error => alert(error))
-
-    e.preventDefault()
-  }
-
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   handleRecaptcha = value => {
-    this.setState({ 'g-recaptcha-response': value })
-  }
+    this.setState({ "g-recaptcha-response": value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...this.state
+      })
+    })
+      .then(() => navigateTo(form.getAttribute("action")))
+      .catch(error => alert(error));
+  };
+
+
 
   render() {
     const { name, email, message } = this.state
@@ -53,53 +54,40 @@ class Contact extends Component {
         </div>
         <div className="form">
           <form
-            onSubmit={this.handleSubmit}
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
             name="contact-recaptcha"
             method="post"
+            action="/thanks/"
+            data-netlify="true"
             data-netlify-recaptcha="true"
-            netlify-recaptcha
-            netlify
+            onSubmit={this.handleSubmit}
           >
-            <input type="hidden" name="contact" value="contact" />
+            <noscript>
+              <p>This form won’t work with Javascript disabled</p>
+            </noscript>
             <p>
-              <label htmlFor="name">Your Name: </label>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                placeholder="Your Name"
-                onChange={this.handleChange}
-                required
-              />
+              <label>
+                Your name:<br />
+                <input type="text" name="name" onChange={this.handleChange} />
+              </label>
             </p>
             <p>
-              <label htmlFor="email">Your Email: </label>
-              <input
-                type="email"
-                name="email"
-                value={email}
-                placeholder="Your Email"
-                onChange={this.handleChange}
-                required
-              />
+              <label>
+                Your email:<br />
+                <input type="email" name="email" onChange={this.handleChange} />
+              </label>
             </p>
             <p>
-              <label htmlFor="message">Message: </label>
-              <textarea
-                name="message"
-                value={message}
-                placeholder="Your Message"
-                onChange={this.handleChange}
-              />
+              <label>
+                Message:<br />
+                <textarea name="message" onChange={this.handleChange} />
+              </label>
             </p>
             <Recaptcha
               ref="recaptcha"
-              sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
+              sitekey={RECAPTCHA_KEY}
+              // sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
               onChange={this.handleRecaptcha}
             />
-
             <p>
               <button type="submit">Send</button>
             </p>
