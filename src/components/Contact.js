@@ -35,7 +35,7 @@ class Contact extends React.Component {
         ...this.state,
       }),
     })
-      .then(() => navigateTo(form.getAttribute('action')))
+      .then(res => console.log(res))
       .catch(error => alert(error))
   }
 
