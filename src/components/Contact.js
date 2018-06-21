@@ -10,7 +10,7 @@ function encode(data) {
     .join('&')
 }
 
-export default class Contact extends React.Component {
+class Contact extends React.Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -52,40 +52,53 @@ export default class Contact extends React.Component {
         </div>
         <div className="form">
           <form
+            onSubmit={this.handleSubmit}
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
             name="contact-recaptcha"
             method="post"
-            action="/blog/"
-            data-netlify="true"
             data-netlify-recaptcha="true"
-            onSubmit={this.handleSubmit}
+            netlify-recaptcha
+            netlify
           >
-            <noscript>
-              <p>This form won’t work with Javascript disabled</p>
-            </noscript>
+            <input type="hidden" name="contact" value="contact" />
             <p>
-              <label>
-                Your name:<br />
-                <input type="text" name="name" onChange={this.handleChange} />
-              </label>
+              <label htmlFor="name">Your Name: </label>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                placeholder="Your Name"
+                onChange={this.handleChange}
+                required
+              />
             </p>
             <p>
-              <label>
-                Your email:<br />
-                <input type="email" name="email" onChange={this.handleChange} />
-              </label>
+              <label htmlFor="email">Your Email: </label>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                placeholder="Your Email"
+                onChange={this.handleChange}
+                required
+              />
             </p>
             <p>
-              <label>
-                Message:<br />
-                <textarea name="message" onChange={this.handleChange} />
-              </label>
+              <label htmlFor="message">Message: </label>
+              <textarea
+                name="message"
+                value={message}
+                placeholder="Your Message"
+                onChange={this.handleChange}
+              />
             </p>
             <Recaptcha
               ref="recaptcha"
               sitekey={RECAPTCHA_KEY}
-              // sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
               onChange={this.handleRecaptcha}
             />
+
             <p>
               <button type="submit">Send</button>
             </p>
@@ -95,6 +108,8 @@ export default class Contact extends React.Component {
     )
   }
 }
+
+export default Contact
 
 const ContactSection = styled.section`
   margin: 0 auto 25px;
