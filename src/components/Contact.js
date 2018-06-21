@@ -14,6 +14,7 @@ class Contact extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      'g-recapch-response': '',
       name: '',
       email: '',
       message: '',
@@ -69,7 +70,7 @@ class Contact extends Component {
                 name="name"
                 value={name}
                 placeholder="Your Name"
-                onChange={this.handleRecaptcha}
+                onChange={this.handleChange}
                 required
               />
             </p>
