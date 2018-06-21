@@ -95,7 +95,7 @@ class Contact extends React.Component {
             </p>
             <Recaptcha
               ref="recaptcha"
-              data-sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
+              sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
               onChange={this.handleRecaptcha}
             />
 
