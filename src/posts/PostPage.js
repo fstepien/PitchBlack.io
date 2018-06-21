@@ -17,6 +17,7 @@ export default class PostPage extends Component {
     )
   }
 }
+
 // $ slug defines there will be a variable slug in the context
 export const query = graphql`
   query BlogPostQuery($slug: String!) {

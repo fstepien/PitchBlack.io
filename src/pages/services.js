@@ -13,7 +13,7 @@ const Services = ({ data }) => (
     <h1>Services</h1>
     {data.allContentfulService.edges.map(({ node }) => {
       return (
-        <article className="service">
+        <article className="service" key={node.id}>
           <h3>{node.title}</h3>
           <div
             dangerouslySetInnerHTML={{

@@ -65,8 +65,8 @@ const MainText = styled.div`
   bottom: ${({ isHome }) => (isHome ? '50%' : '100%')};
   transform: translateX(-50%) translateY(50%);
   @media (max-height: 700px) {
-    bottom: ${({ isHome }) => (isHome ? '10%' : '100%')};
-    transform: translateX(-50%) translateY(0%);
+    /* bottom: ${({ isHome }) => (isHome ? '10%' : '100%')}; */
+    /* transform: translateX(-50%) translateY(0%); */
   }
   opacity: ${({ isHome }) => (isHome ? '1' : '0')};
   left: 50%;

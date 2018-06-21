@@ -93,7 +93,7 @@ class Contact extends Component {
             </p>
             <Recaptcha
               ref="recaptcha"
-              sitekey={RECAPTCHA_KEY}
+              sitekey="6Lft9F8UAAAAAC8antISjVFAnITvcVarillVFVGG"
               onChange={this.handleRecaptcha}
             />
             <p>
