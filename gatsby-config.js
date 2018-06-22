@@ -6,6 +6,14 @@ module.exports = {
   pathPrefix: '/gatsby',
   plugins: [
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-121190071-1',
+        // Puts tracking script in the head instead of the body
+        head: true,
+      },
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: '8uoxthlz1nrg',
