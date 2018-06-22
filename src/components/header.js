@@ -57,6 +57,9 @@ const MainNav = styled.nav`
       }
     }
   }
+  @media (max-width: 630px) {
+    display: none;
+  }
 `
 const MainText = styled.div`
   color: white;

@@ -76,6 +76,11 @@ const ServiceListSection = styled.section`
             letter-spacing: 1px;
             transition: all ease 0.3s;
                 font-weight: 400;
+                @media (max-width: 600px) {
+              padding: 0.5rem;
+                  min-width: 300px;
+                  margin: 0 auto;
+            }
             &:hover {
                 color: black;
                 background: yellow;

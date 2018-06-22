@@ -52,12 +52,13 @@ const BlogPostSection = styled.section`
             color: Black;
             border: solid 2px black;
             background-color: white;
-            min-width: 300px;
+            transition: all ease 0.5s;
             text-align: center;
             padding: 0.6rem 1rem;
-            @media (max-width: 600px) {
-              padding: 0.5rem;
-          
+                   @media (max-width: 600px) {
+                  padding: 0.5rem;
+                  min-width: 300px;
+                  margin: 0 auto;
             }
             margin-bottom: 50px;
             text-transform: uppercase;
