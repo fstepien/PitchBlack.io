@@ -8,10 +8,10 @@ const IndexPageBlogPosts = ({ posts }) => (
     <div className="blog-posts__wrap">
       <h2>Posts</h2>
       <div className="blog-posts__wrap__list">
-        {posts.edges.map(({ node }) => (
-          <PostListing key={node.id} post={node} />
-        ))}
-        <Link to={'/service'} className="blog-posts__wrap__list__link">
+        {posts.edges
+          .slice(0, 2)
+          .map(({ node }) => <PostListing key={node.id} post={node} />)}
+        <Link to={'/blog'} className="blog-posts__wrap__list__link">
           Read More
         </Link>
       </div>

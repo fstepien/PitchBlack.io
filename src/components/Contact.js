@@ -128,6 +128,9 @@ const ContactSection = styled.section`
   label {
     display: none;
   }
+  div {
+    margin: 0 auto;
+  }
   & button {
     text-decoration: none;
     color: Black;

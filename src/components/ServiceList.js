@@ -11,7 +11,7 @@ const ServiceList = ({ services }) => (
         {services.map(({ node }) => {
           return <ServiceItem key={node.id} service={node} />
         })}
-        <Link to={'/service'} className="services__wrap__list__link">
+        <Link to={'/services'} className="services__wrap__list__link">
           Read More
         </Link>
       </div>

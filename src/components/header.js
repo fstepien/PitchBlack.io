@@ -62,7 +62,7 @@ const MainText = styled.div`
   color: white;
   position: absolute;
 
-  bottom: ${({ isHome }) => (isHome ? '50%' : '100%')};
+  bottom: ${({ isHome }) => (isHome ? '50%' : '200%')};
   transform: translateX(-50%) translateY(50%);
   @media (max-height: 700px) {
     /* bottom: ${({ isHome }) => (isHome ? '10%' : '100%')}; */
@@ -73,7 +73,7 @@ const MainText = styled.div`
   z-index: 5;
   max-width: 620px;
   display: inline;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.6s ease-in-out;
   & h1 {
     text-transform: uppercase;
     font-weight: 600;
