@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 
 export default class PostPage extends Component {
   render() {
@@ -8,8 +9,8 @@ export default class PostPage extends Component {
     return (
       <BlogPostSection>
         <div className="blog-posts__wrap">
-          <span>{data.contentfulBlogPost.date}</span>
-          <h1>{data.contentfulBlogPost.title}</h1>
+          <span>{data.contentfulBlogPost.createdAt}</span>
+          <h2>{data.contentfulBlogPost.title}</h2>
           <div className="blog-posts__wrap__list">
             <div
               dangerouslySetInnerHTML={{
@@ -17,6 +18,9 @@ export default class PostPage extends Component {
               }}
             />
           </div>
+          <Link to={'/blog'} className="blog-posts__wrap__list__link">
+            Return to Posts
+          </Link>
         </div>
       </BlogPostSection>
     )
@@ -35,6 +39,7 @@ export const query = graphql`
       }
       slug
       id
+      createdAt(formatString: "MMMM DD, YYYY")
     }
   }
 `

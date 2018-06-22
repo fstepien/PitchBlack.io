@@ -142,6 +142,9 @@ export default class Header extends Component {
                 </li>
 
                 <li>
+                  <Link to="/blog"> Blog</Link>
+                </li>
+                <li>
                   <Link to="/services"> Services</Link>
                 </li>
                 <li>
