@@ -35,7 +35,10 @@ class Contact extends React.Component {
         ...this.state,
       }),
     })
-      .then(res => console.log(res))
+      .then(res => {
+        this.setState({ email: '', message: '', name: '', sent: true })
+        console.log(res)
+      })
       .catch(error => alert(error))
   }
 
@@ -49,6 +52,7 @@ class Contact extends React.Component {
             Let's solve some of your marking, operations and production
             challenges today. Hit us up!
           </p>
+          {this.state.sent && <p>Thanks, your message has been sent!</p>}
         </div>
         <div className="form">
           <form
