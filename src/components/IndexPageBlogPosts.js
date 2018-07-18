@@ -48,7 +48,7 @@ const BlogPostSection = styled.section`
       flex-flow: row wrap;
       justify-content: space-between;
         &__link {
-      text-decoration: none;
+            text-decoration: none;
             color: Black;
             border: solid 2px black;
             background-color: white;
@@ -58,7 +58,8 @@ const BlogPostSection = styled.section`
                    @media (max-width: 600px) {
                   padding: 0.5rem;
                   min-width: 300px;
-                  margin: 0 auto;
+                   margin: 0 auto 50px;
+            
             }
             margin-bottom: 50px;
             text-transform: uppercase;

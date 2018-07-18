@@ -77,9 +77,9 @@ const ServiceListSection = styled.section`
             transition: all ease 0.3s;
                 font-weight: 400;
                 @media (max-width: 600px) {
-              padding: 0.5rem;
+                  padding: 0.5rem;
                   min-width: 300px;
-                  margin: 0 auto;
+                  margin: 0 auto 50px;
             }
             &:hover {
                 color: black;

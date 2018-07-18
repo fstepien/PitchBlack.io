@@ -163,7 +163,7 @@ export default class Header extends Component {
           <MainText isHome={location.pathname === '/'}>
             <h1>
               Pitch Black <br />
-              <span className="yellow">Solves Probelms</span> <br />for direct
+              <span className="yellow">Solves Problems</span> <br />for direct
               marketers
             </h1>
           </MainText>
